@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>नाम के लिए Bible वचन</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans","Helvetica Neue",Arial;max-width:720px;margin:30px auto;padding:20px;background:#f0f4f8}
+    .card{border-radius:12px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,0.08);background:#fff}
+    input[type="text"]{width:100%;padding:12px;margin:10px 0;border-radius:8px;border:1px solid #ddd;font-size:16px}
+    button{padding:10px 16px;border-radius:8px;border:none;background:#2b6cb0;color:#fff;font-size:16px;cursor:pointer}
+    .verse{margin-top:18px;padding:14px;border-radius:10px;background:#f7fafc}
+    .ref{font-weight:600;margin-top:8px;color:#555}
+    footer{margin-top:18px;color:#666;font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>नमस्ते — अपना नाम डालें</h1>
+    <p>अपने नाम डालिए और आपके लिए Bible से एक वचन दिखाए जाएंगे।</p>
+
+    <label for="name">आपका नाम:</label>
+    <input id="name" type="text" placeholder="उदा. Ravi / Aisha" />
+
+    <div style="display:flex;gap:8px">
+      <button id="showBtn">वचन दिखाएँ</button>
+      <button id="randomBtn" title="नाम छोड़े भी दिख जाएगा">Random वचन</button>
+    </div>
+
+    <div id="result"></div>
+
+    <footer>
+      <div>नोट: नाम किसी सर्वर पर सेव नहीं होता — सब client-side (आपके ब्राउज़र) में चलता है।</div>
+    </footer>
+  </div>
+
+  <script>
+    const verses = [
+      { text: "{name}, \"यहोवा तेरे साथ है; वह तुझमें शक्ति करेगा।\"", ref: "यशायाह 41:10" },
+      { text: "{name}, \"यहोवा मेरा चरवाहा है; मुझे कभी कमी न होगी।\"", ref: "भजन संहिता 23:1" },
+      { text: "{name}, \"परमेश्वर ने हमें भयभीत रहने की आत्मा नहीं दी, पर शक्ति और प्रेम और संयम की आत्मा दी है, {name}.\"", ref: "2 तीमुथियुस 1:7 (अनुप्रयुक्त)" },
+      { text: "{name}, \"मुझे सब कुछ देने की क्षमता है المسيح के द्वारा जो मुझे ताकत देता है।\"", ref: "फिलिप्पियों 4:13" },
+      { text: "{name}, \"प्रभु तुम पर अपना चेहरा मत ढाँकें; उस पर दया करो और तुम्हें शान्ति दे।\"", ref: "2 थेसलोनियों 3:16 (अनुप्रयुक्त)" },
+      { text: "{name}, \"सब बातें मिलकर भले के लिए काम करती हैं उन लोगों के साथ जो परमेश्वर से प्रेम करते हैं।\"", ref: "रोमियों 8:28" }
+    ];
+
+    function pickVerseByName(name){
+      if(!name) {
+        return verses[Math.floor(Math.random()*verses.length)];
+      }
+      const first = name.trim().charAt(0).toLowerCase();
+      const code = first.charCodeAt(0) || Math.floor(Math.random()*26);
+      const idx = code % verses.length;
+      return verses[idx];
+    }
+
+    function showVerse(forName) {
+      const v = pickVerseByName(forName);
+      const displayText = v.text.replace(/\{name\}/g, forName ? forName : "प्रिय मित्र");
+      const out = document.getElementById('result');
+      out.innerHTML = `
+        <div class="verse">
+          <div style="font-size:18px;line-height:1.4">${escapeHtml(displayText)}</div>
+          <div class="ref">${escapeHtml(v.ref)}</div>
+        </div>
+      `;
+    }
+
+    document.getElementById('showBtn').addEventListener('click', ()=>{
+      const name = document.getElementById('name').value.trim();
+      if(!name){ alert('कृपया अपना नाम डालें या "Random वचन" चुनें।'); return; }
+      showVerse(name);
+    });
+
+    document.getElementById('randomBtn').addEventListener('click', ()=>{
+      document.getElementById('name').value = '';
+      showVerse('');
+    });
+
+    function escapeHtml(s){
+      if(!s) return '';
+      return s.replace(/[&<>"']/g, function(m){
