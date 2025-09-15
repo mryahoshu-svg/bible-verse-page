@@ -1,177 +1,227 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Spiritual Blessing</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Georgia', serif;
-      background: url('assets/images/spiritual-guidance-bg.jpg) no-repeat center center fixed;
-      background-size: cover;
-      color: #002244;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      animation: fadeIn 2s ease-in;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      text-align: center;
-      max-width: 400px;
-    }
-
-    input {
-      padding: 10px;
-      width: 80%;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background-color: #002244;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .verse {
-      margin-top: 20px;
-      font-style: italic;
-    }
-
-    .church-tag {
-      font-size: 16px;
-      font-weight: bold;
-      color: #444;
-      margin-bottom: 10px;
-    }
-
-    .watermark {
-      position: absolute;
-      bottom: 10px;
-      width: 100%;
-      text-align: center;
-      font-size: 14px;
-      color: #ffffffaa;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Daily Bible Verse – Blessings, Guidance, Help</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Montserrat, Arial, sans-serif;
+            background: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .overlay {
+            background: rgba(255,255,255,0.8);
+            min-height: 100vh;
+            padding-top: 30px;
+        }
+        .container {
+            background: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(50,50,90,0.14);
+            max-width: 400px;
+            margin: auto;
+            padding: 24px 16px 20px 16px;
+        }
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #3569be;
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #444;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 1em;
+            color: #333;
+        }
+        input[type="text"] {
+            padding: 12px;
+            width: 96%;
+            font-size: 16px;
+            margin-bottom: 16px;
+            border: 1.2px solid #b9c6e6;
+            border-radius: 6px;
+            background: #f9f9fc;
+        }
+        button {
+            padding: 10px 22px;
+            font-size: 17px;
+            background: linear-gradient(90deg,#3569be 60%,#74b9ff 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 10px;
+            margin-top: 8px;
+        }
+        button:hover {
+            background: linear-gradient(90deg,#74b9ff 60%,#3569be 100%);
+        }
+        .verse {
+            margin-top: 18px;
+            background: #eaf0fa;
+            padding: 18px 14px 20px 14px;
+            border-radius: 10px;
+            box-shadow: 0 1px 8px rgba(53,105,190,0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .verse-ref {
+            font-weight: bold;
+            color: #3569be;
+            margin-bottom: 8px;
+            font-size: 1em;
+            text-align: center;
+        }
+        .verse-eng, .verse-hin {
+            margin-bottom: 8px;
+            font-size: 1.02em;
+            text-align: center;
+        }
+        .verse-category {
+            font-style: italic;
+            color: #6f42c1;
+            margin-bottom: 7px;
+            font-size: 0.98em;
+            text-align: center;
+        }
+        #saveImageBtn {
+            margin-top: 12px;
+            background: linear-gradient(90deg,#43c6ac 60%,#191654 100%);
+        }
+        #saveImageBtn:active {
+            background: linear-gradient(90deg,#191654 60%,#43c6ac 100%);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 26px;
+            color: #888;
+            font-size: 0.94em;
+        }
+        @media (max-width: 480px) {
+            .container {
+                max-width: 98vw;
+                padding: 10vw 2vw 8vw 2vw;
+            }
+            h2 { font-size: 1.5em; }
+            .verse { padding: 14px 4px 16px 4px; }
+        }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <div class="church-tag">✝ हम एक चर्च हैं ✝</div>
-    <h2>Spiritual Guidance</h2>
-    <label for="username">अपना नाम दर्ज करें:</label><br>
-    <input type="text" id="username" placeholder="आपका नाम"><br>
-    <button onclick="showBlessing()">प्रस्तुत करें</button>
-    <div class="verse" id="blessing"></div>
-  </div>
+    <div class="overlay">
+    <div class="container">
+        <h2>Bible Verse For Today</h2>
+        <div class="subtitle">Daily Blessings, Guidance & Help</div>
+        <form id="nameForm">
+            <label for="username">Enter your name:</label><br>
+            <input type="text" id="username" name="username" autocomplete="off" required><br>
+            <button type="submit">Show My Verse</button>
+        </form>
+        <div id="verseDisplay" class="verse" style="display:none;">
+            <div class="verse-category" id="verseCategory"></div>
+            <div class="verse-ref" id="verseRef"></div>
+            <div class="verse-eng" id="verseEng"></div>
+            <div class="verse-hin" id="verseHin"></div>
+            <button id="saveImageBtn" style="display:none;">Save Verse as Image</button>
+        </div>
+    </div>
+    <div class="footer">© 2025 Daily Bible Verse | For spiritual guidance and blessing</div>
+    </div>
+    <!-- html2canvas CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script>
+        // Categorized verses
+        const verses = [
+            {
+                category: "Blessings",
+                ref: "Numbers 6:24-26",
+                eng: "The LORD bless you and keep you; the LORD make his face shine upon you and be gracious to you; the LORD turn his face toward you and give you peace.",
+                hin: "यहोवा तेरा भला करे और तेरा रक्षा करे; यहोवा अपना मुख तुझ पर चमकाए और तुझ पर कृपा करे; यहोवा अपना मुख तुझ की ओर करे और तुझे शांति दे।"
+            },
+            {
+                category: "Guidance",
+                ref: "Proverbs 3:5-6",
+                eng: "Trust in the LORD with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.",
+                hin: "अपने पूरे मन से यहोवा पर भरोसा रखो, और अपनी समझ पर निर्भर मत रहो। अपनी सारी बातों में उसी को स्मरण करो, और वह तेरे मार्ग सीधे करेगा।"
+            },
+            {
+                category: "Help",
+                ref: "Psalm 121:1-2",
+                eng: "I lift up my eyes to the hills—where does my help come from? My help comes from the LORD, the Maker of heaven and earth.",
+                hin: "मैं अपनी आँखें पर्वतों की ओर उठाता हूँ—मुझे सहायता कहाँ से मिलेगी? मेरी सहायता यहोवा से होती है, जो आकाश और पृथ्वी का निर्माता है।"
+            },
+            {
+                category: "Blessings",
+                ref: "Jeremiah 29:11",
+                eng: "For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, plans to give you hope and a future.",
+                hin: "क्योंकि यहोवा कहता है, मैं जो योजनाएँ तुम्हारे लिए बनाता हूँ उन्हें जानता हूँ, वे तुम्हारी भलाई के लिए हैं, न कि बुराई के लिए, ताकि तुम्हें आशा और भविष्य मिले।"
+            },
+            {
+                category: "Guidance",
+                ref: "Psalm 32:8",
+                eng: "I will instruct you and teach you in the way you should go; I will counsel you with my loving eye on you.",
+                hin: "मैं तुझे बुद्धि दूँगा और जिस मार्ग पर तुझे चलना है, उस में तुझे शिक्षा दूँगा; मैं तुझे सलाह दूँगा, मेरी आँखें तुझ पर रहेंगी।"
+            },
+            {
+                category: "Help",
+                ref: "Isaiah 41:10",
+                eng: "So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you; I will uphold you with my righteous right hand.",
+                hin: "इसलिए तू मत डर, क्योंकि मैं तेरे साथ हूँ; घबरा मत, क्योंकि मैं तेरा परमेश्वर हूँ। मैं तुझे बल दूँगा, तेरी सहायता करूँगा, और अपने धर्मी दाहिने हाथ से तुझे संभालूँगा।"
+            }
+        ];
 
-  <div class="watermark">✝ हम एक चर्च हैं • We are a Church ✝</div>
+        function getDailyVerse() {
+            // Today's date (YYYYMMDD as a number)
+            const now = new Date();
+            const daySeed = now.getFullYear() * 10000 + (now.getMonth()+1) * 100 + now.getDate();
+            const index = daySeed % verses.length;
+            return verses[index];
+        }
 
-  <script>
-    const verses = [
-      { hi: "परमेश्वर तुम्हारा सहायक है; तुम न डरना।", en: "God is your helper; do not be afraid." },
-      { hi: "प्रभु तुम्हें मार्गदर्शन देगा और तुम्हारी सहायता करेगा।", en: "The Lord will guide you and help you." },
-      { hi: "प्रभु की शांति तुम्हारे हृदय में बनी रहे।", en: "May the peace of the Lord remain in your heart." },
-      { hi: "तेरा भविष्य उज्जवल है, प्रभु तेरे साथ है।", en: "Your future is bright, the Lord is with you." },
-      { hi: "प्रभु तुम्हें आशीष दे और तुम्हारी रक्षा करे।", en: "The Lord bless you and keep you." },
-      { hi: "जो प्रभु पर भरोसा करते हैं, वे कभी लज्जित नहीं होंगे।", en: "Those who trust in the Lord will never be put to shame." },
-      { hi: "प्रभु तेरी रक्षा करेगा, तेरे आने-जाने में।", en: "The Lord will protect you in your coming and going." }
-      {hi: "अपने पूरे मन से यहोवा पर भरोसा रख, और अपनी समझ पर निर्भर न हो; अपनी सब राहों में उसी को मान, और वह तुम्हारे मार्ग सीधा कर देगा।", ref: "नीतिवचन 3:5-6" },
-      { hi: "अपने मार्ग मुझे दिखा, हे यहोवा; और मुझे अपनी राह सिखा।", ref: "भजन 25:4" },
-      { hi: "वह दीनों को सही राह दिखाता है, और उन्हें अपनी राह सिखाता है।", ref: "भजन 25:9" },
-    { hi: "मैं तुम्हें मार्गदर्शन करूँगा, अपनी दृष्टि से तुम्हें राह दिखाऊँगा।", ref: "भजन 32:8" },
-    { hi: "यदि किसी के पास बुद्धि की कमी हो, तो वह परमेश्वर से माँगे; वह बिना दोष के देता है।", ref: "याकूब 1:5" },
-    { hi: "यहोवा हमेशा तुम्हारी राह दिखाएगा; तुम्हारी आत्मा को तृप्त करेगा, तुम्हें शक्ति देगा। तुम जलते बाग की तरह रहोगे।", ref: "यशायाह 58:11" },
-    { hi: "जब तुम दाहिने या बाएँ मुड़ो, तो तुम्हारे पीछे सुनाई देगा – ‘यही राह है, इसी पर चढ़ो।’", ref: "यशायाह 30:21" },
-    { hi: "परमेश्वर की योजना तुम्हारे भले के लिए है; तुम्हें भविष्य और आशा देगा।", ref: "यिर्मयाह 29:11" },
-    { hi: "परमेश्वर के वचन जीवन और प्रकाश देते हैं।", ref: "यूहन्ना 6:63" },
-    { hi: "जो प्रभु पर भरोसा करते हैं उन्हें नई शक्ति मिलेगी; वे परिंदों की भाँति ऊपर उड़ेंगे।", ref: "यशायाह 40:31" },
-    { hi: "जो प्रभु की ओर सहायता के लिए पुकारते हैं, उन्हें वह जवाब देता है।", ref: "भजन 50:15" },
-    { hi: "परमेश्वर की वचनें हमारी आत्मा को तृप्त करती हैं।", ref: "भजन 119:103" },
-    { hi: "जो मन से प्रभु से मिलता है, उसका जीवन बदल जाता है।", ref: "याकूब 4:8" },
-    { hi: "प्रभु के मार्ग सत्य और न्याय के मार्ग हैं।", ref: "भजन 23:3" },
-    { hi: "परमेश्वर अपनी शिक्षा से हमें ठीक रास्ते पर ले जाता है।", ref: "नीतिवचन 4:11" },
-    { hi: "मेरे मार्गदर्शन के लिए प्रभु पर भरोसा रखो, वह तुम्हें मजबूत करेगा।", ref: "भजन 23:3" },
-    { hi: "तुम प्रभु से सलाह माँगो, वह तुम्हें सही दिशा देगा।", ref: "नीतिवचन 11:14" },
-    { hi: "परमेश्वर के मार्गों पर चलो और जीवन पाओ।", ref: "नीतिवचन 3:17" },
-    { hi: "परमेश्वर के साथ आशा रखना हमारे जीवन में नयापन लाता है।", ref: "यिर्मयाह 29:11" },
-    { hi: "परमेश्वर की सहायता से हम भय पर विजय पाएँगे।", ref: "यशायाह 41:13" },
+        document.getElementById('nameForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('username').value.trim();
+            if (!name) return;
 
-    // Blessings
-    { hi: "यहोवा तुम्हें आशीर्वाद दे और तुम्हें सुरक्षित रखे; उसके चेहरे की रोशनी तुम पर चमके; वह तुम्हें शांति दे।", ref: "परोस 6:24-26" },
-    { hi: "और मेरा परमेश्वर अपनी महिमा के अनुसार तुम्हारी प्रत्येक आवश्यकता मसीह यीशु में पूरी करेगा।", ref: "फिलिप्पियों 4:19" },
-    { hi: "जो पहले अपने राज्य और धर्म को खोजते हैं, उन्हें और सब वस्तुएँ दी जाएँगी।", ref: "मत्ती 6:33" },
-    { hi: "प्रभु तुम्हें आशीर्वाद देगा और तुम्हें शांति देगा।", ref: "परोस 10:22" },
-    { hi: "परमेश्वर की दया हर सुबह नई होती है।", ref: "भजन 30:5" },
-    { hi: "यहोवा तुम्हारे लिए युद्ध करेगा; तुम शांत रहो।", ref: "निर्गमन 14:14" },
-    { hi: "हे यहोवा, तेरा प्रेम सदा स्थिर है; तुम्हारा विश्वास हमेशा रहेगा।", ref: "भजन 89:1" },
-    { hi: "प्रभु हमारे साथ है — वह हमारा सहारा और शक्ति है।", ref: "भजन 46:1" },
-    { hi: "परमेश्वर की दया हर सुबह नई होती है; उसी पर भरोसा रखो।", ref: "भजन 30:5" },
-    { hi: "जो लोग मेल मिलाप करते हैं वे परमेश्वर के पुत्र कहलाएँगे।", ref: "मत्ती 5:9" },
-    { hi: "परमेश्वर तुम्हें खुशहाली, लंबी उम्र और शांति से भर देगा।", ref: "भजन 128:1-4" },
-    { hi: "प्रभु की कृपा से तुम्हारा घर भरा-पूरा होगा।", ref: "नीतिवचन 3:33" },
-    { hi: "जो व्यक्ति प्रेमपूर्वक चलता है, उसके रास्ते आशीर्वाद से भरपूर होंगे।", ref: "नीतिवचन 16:20" },
-    { hi: "परमेश्वर की दया से मनुष्य को जीवन मिलता है।", ref: "नीतिवचन 19:23" },
-    { hi: "परमेश्वर का आशीर्वाद धन और सम्मान दोनों देता है।", ref: "नीतिवचन 22:4" },
-    { hi: "प्रभु की इच्छाएँ हमारे लिए भलाई लेकर आती हैं।", ref: "यिर्मयाह 29:11" },
-    { hi: "प्रभु की शांति तुम्हें संतोष और आनंद दे।", ref: "रोमियों 15:13" },
-    { hi: "जो अपनी बुद्धि प्रभु से पाते हैं, वे समृद्ध होंगे।", ref: "नीतिवचन 8:18" },
-    { hi: "परमेश्वर की आशीर्वाद हमें जीवन की कठिनाइयों से ऊपर उठाती है।", ref: "2 कुरिन्थियों 9:8" },
-    { hi: "परमेश्वर हमारे सुख और आनंद का स्रोत है।", ref: "भजन 16:11" },
+            const verse = getDailyVerse();
 
-    // Help
-    { hi: "मत डर, क्योंकि मैं तेरे साथ हूँ; मैं तुझे सहायता दूँगा, और अपने हमेशा न्यायपूर्ण दाहिने हाथ से तुझे थामूँगा।", ref: "यशायाह 41:10" },
-    { hi: "मैं ने अपनी आँखें पहाड़ों की ओर उठाईं—मेरी सहायता कहाँ से आएगी? मेरी सहायता यहोवा से आती है, जिसने स्वर्ग और पृथ्वी बनाई है।", ref: "भजन 121:1-2" },
-    { hi: "ईश्वर हमारे दुःखों का साथी है और हमारी सहायता करता है।", ref: "2 कुरिन्थियों 1:3-4" },
-    { hi: "जो धर्मी सहायता मांगते हैं, तो प्रभु सुनता है और उन्हें सभी संकटों से छुटकारा देता है।", ref: "भजन 34:17" },
-    { hi: "प्रभु तुम्हें शांति देगा; उसका चेहरा तुम पर चमके।", ref: "2 थेसलोनियों 3:16" },
-    { hi: "परमेश्वर ने हमको भय की आत्मा नहीं दी, बल्कि शक्ति और प्रेम और संयम की।", ref: "2 तीमुथियुस 1:7" },
-    { hi: "मैं तुमसे वचन देता हूँ: मैं तुम्हें कभी नहीं छोड़ूँगा और न तुम्हें तिरस्कृत करूँगा।", ref: "इब्रानियों 13:5" },
-    { hi: "परमेश्वर हमें अपनी शक्ति से संभालेगा और हमें नई आशा देगा।", ref: "यशायाह 43:1-2" },
-    { hi: "तुम्हारा हर काम प्रेम से किया जाए।", ref: "1 कुरिन्थियों 16:14" },
-    { hi: "जो कोई प्रभु में विश्वास रखता है, उसके लिये सब कुछ संभव है।", ref: "मरकुस 9:23" },
-    { hi: "प्रभु हमारी सहायता के लिए सदा तत्पर रहता है।", ref: "भजन 46:1" },
-    { hi: "परमेश्वर हमारे दुःखों को समझता है और हमें सहारा देता है।", ref: "भजन 34:18" },
-    { hi: "परमेश्वर से सहायता माँगो, वह तुम्हें नई शक्ति देगा।", ref: "यशायाह 40:29" },
-    { hi: "मैं प्रभु पर पूरी तरह निर्भर हूँ, वह मेरी सहायता है।", ref: "भजन 18:2" },
-    { hi: "जो प्रभु की ओर सहायता के लिए पुकारते हैं, उन्हें वह जवाब देता है।", ref: "भजन 50:15" },
-    { hi: "ईश्वर की सहायता के बिना हम कुछ भी नहीं कर सकते।", ref: "यूहन्ना 15:5" },
-    { hi: "परमेश्वर अपने लोगों का बचाव करता है और उनकी रक्षा करता है।", ref: "भजन 34:7" },
-    { hi: "प्रभु को पुकारो, वह तुम्हारी सहायता करेगा।", ref: "यशायाह 41:13" },
-    { hu: "मैं प्रभु से अपने संकट में मदद माँगता हूँ और वह मेरी सहायता करता है।", ref: "भजन 86:7" },
-    { hi: "जो मनुष्य परमेश्वर की सहायता पर  
+            document.getElementById('verseCategory').textContent = `Today's Theme: ${verse.category}`;
+            document.getElementById('verseRef').textContent = verse.ref;
+            document.getElementById('verseEng').textContent = verse.eng;
+            document.getElementById('verseHin').textContent = verse.hin;
+            document.getElementById('verseDisplay').style.display = 'flex';
+            document.getElementById('saveImageBtn').style.display = 'inline-block';
 
-    function showBlessing() {
-      const name = document.getElementById('username').value.trim();
-      if (name === "") {
-        alert("कृपया अपना नाम दर्ज करें।");
-        return;
-      }
+            // Hide form after verse is shown
+            document.getElementById('nameForm').style.display = 'none';
+        });
 
-      const randomVerse = verses[Math.floor(Math.random() * verses.length)];
-      document.getElementById('blessing').innerHTML = `
-        <strong>${name},</strong><br>
-        <span>${randomVerse.hi}</span><br>
-        <em>${randomVerse.en}</em>
-      `;
-    }
-  </script>
+        document.getElementById('saveImageBtn').addEventListener('click', function() {
+            const verseNode = document.getElementById('verseDisplay');
+            html2canvas(verseNode, {
+                backgroundColor: "#eaf0fa",
+                scale: 2,
+                useCORS: true
+            }).then(function(canvas) {
+                let link = document.createElement('a');
+                link.download = 'bible-verse-today.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        });
+    </script>
 </body>
 </html>
