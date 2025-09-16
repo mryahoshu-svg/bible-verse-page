@@ -1,0 +1,22 @@
+<!-- Spiritual Photo Upload Section -->
+<div class="spiritual-photo-section" style="max-width:340px;margin:44px auto 0 auto;background:rgba(255,255,255,0.98);border-radius:18px;box-shadow:0 0 32px #43c6ac33,0 0 14px #74b9ff44;padding:28px 22px 20px 22px;text-align:center;">
+    <h3 style="font-family:'Dancing Script',cursive;color:#3569be;margin-bottom:8px;font-size:1.6em;text-shadow:0 2px 12px #74b9ff44;">Upload Your Photo</h3>
+    <input type="file" id="uploadPhoto" accept="image/*" style="margin-bottom:14px;">
+    <br>
+    <img id="displayPhoto" alt="Your photo will appear here" style="max-width:200px; margin-top:12px; border-radius:18px; box-shadow:0 2px 12px #74b9ff44; display:none;">
+    <div class="info" style="font-size:0.95em;color:#6f42c1;margin-top:10px;font-style:italic;">(Photo is only visible to you, not saved anywhere)</div>
+</div>
+<script>
+document.getElementById("uploadPhoto").onchange = function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+            var img = document.getElementById("displayPhoto");
+            img.src = evt.target.result;
+            img.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+    }
+};
+</script>
